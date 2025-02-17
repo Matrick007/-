@@ -1,0 +1,36 @@
+// Инициализация Telegram WebApp
+const tg = window.Telegram.WebApp;
+
+// Данные для голосования
+let votes = {
+    "Candidate A": 0,
+    "Candidate B": 0,
+    "Candidate C": 0
+};
+
+// Функция для обновления результатов
+function updateResults() {
+    const resultsList = document.getElementById('results-list');
+    resultsList.innerHTML = '';
+    for (const [candidate, count] of Object.entries(votes)) {
+        const li = document.createElement('li');
+        li.textContent = `${candidate}: ${count} votes`;
+        resultsList.appendChild(li);
+    }
+}
+
+// Обработка нажатия на кнопку голосования
+document.querySelectorAll('#candidates button').forEach(button => {
+    button.addEventListener('click', () => {
+        const candidate = button.getAttribute('data-candidate');
+        votes[candidate] += 1;
+        updateResults();
+
+        // Отправка данных в Telegram (опционально)
+        tg.sendData(JSON.stringify({ candidate, votes }));
+    });
+});
+
+// Инициализация приложения
+tg.ready();
+updateResults();

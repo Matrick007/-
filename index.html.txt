@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Mini App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vote for Your Favorite Candidate</h1>
+        <div id="candidates">
+            <!-- Кнопки для голосования -->
+            <button data-candidate="Candidate A">Candidate A</button>
+            <button data-candidate="Candidate B">Candidate B</button>
+            <button data-candidate="Candidate C">Candidate C</button>
+        </div>
+        <div id="results">
+            <h2>Results:</h2>
+            <ul id="results-list"></ul>
+        </div>
+    </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
